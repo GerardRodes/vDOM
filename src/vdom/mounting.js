@@ -6,22 +6,25 @@ import mountVText from './vText/mount'
 	Decides if a vNode is a vElement, vText or vComponent
 	and passes it throught the right mounting method
 */
-export default function mount(vNode, $parent){
+export default function mount(vNode, $parent, index){
 	const { tag, props, children } = vNode
+	index = index || $parent.childNodes.length
 
-	//It's an element
-	if(typeof tag === 'string') {
-		return mountVElement(vNode, $parent)
-	}
 
 	//It's a text node
 	if(typeof vNode === 'string' || typeof vNode === 'number') {
-		return mountVText(vNode, $parent)
+		return mountVText(vNode, $parent, index)
+	}
+
+
+	//It's an element
+	if(typeof tag === 'string') {
+		return mountVElement(vNode, $parent, index)
 	}
 
 	//It's a component
 	if(typeof tag === 'function') {
-		return mountVComponent(vNode, $parent)
+		return mountVComponent(vNode, $parent, index)
 	}
 
 }

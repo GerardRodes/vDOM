@@ -10,21 +10,56 @@ class List extends Component {
 		super(props, children)
 
 		this.state = {
-			counter: 0
+			childs: []
 		}
-
-		setInterval(() =>
-			this.setState({counter: this.state.counter + 1})
-		, 1000)
 	}
+
+
+	renderChilds() {
+		return this.state.childs
+			.filter((child, i) => String(child.id).indexOf(this.props.search) !== -1 )
+			.map((child, i) =>
+				<li 
+					onClick={(e) => this.removeChild(i)}
+					key={'child_'+child.id} >
+					I'm child {child.id}
+				</li>)
+	}
+
+
+	appendChild() {
+		this.setState({
+			childs: this.state.childs.concat([
+				{id: this.state.childs.length + 1 }
+			])
+		})
+	}
+
+
+	removeChild(index) {
+		this.setState({
+			childs: this.state.childs.filter((child, i) => i !== index)
+		})		
+	}
+
+
+	removeLastChild() {
+		this.setState({
+			childs: this.state.childs.slice(0, this.state.childs.length - 1)
+		})
+	}
+
 
 	render() {
 		return (
-			<ul data-counter={this.state.counter} >
-				{this.state.counter}
-				<li>child 1</li>
-				<li>child 2</li>
-			</ul>
+			<div>
+				Childs: {this.state.childs.length}<br />
+				<button onClick={(e) => this.appendChild()} >Add child</button>
+				<button onClick={(e) => this.removeLastChild()} >Remove child</button>
+				<ul>
+					{this.renderChilds()}
+				</ul>
+			</div>
 		)
 	}
 
@@ -35,27 +70,22 @@ class App extends Component {
 
 	constructor(props, children){
 		super(props, children)
-
 		this.state = {
-			counter: 1
+			value: ''
 		}
-
-		setInterval(() =>
-			this.setState({backgroundColor: '#'+Math.floor(Math.random()*16777215).toString(16)})
-		, 500)
 	}
 
-	shouldComponentUpdate(){
-		return false
+
+	handleInput(e) {
+		this.setState({value: e.target.value})
 	}
+
 
 	render() {
 		return (
-			<div style={{
-				backgroundColor: this.state.backgroundColor
-				}} >
-				<input />
-				<List />
+			<div>
+				<input onInput={(e) => this.handleInput(e)} />
+				<List search={this.state.value} />
 			</div>
 		)
 	}
@@ -64,5 +94,5 @@ class App extends Component {
 
 
 
-const mountedElement = mount(<App message="this yo message!" />, document.getElementById('root'))
+const mountedElement = mount(<App />, document.getElementById('root'))
 console.log( mountedElement )

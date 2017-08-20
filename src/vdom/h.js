@@ -31,8 +31,23 @@
 
 	so I can create the Virtual DOM
 */
+import './utils'
+
+
+
 export function h(tag, props, ...children) {
-	return { tag, props, children }
+	return {
+		tag: tag,
+		props: props,
+		children: children
+								.flatten()
+								.map((child, index) => {
+									if (typeof child === 'object') {
+										child._key = child.props && child.props.key !== undefined ? child.props.key : index
+									}
+									return child
+								})
+	}
 }
 
 window.h = h

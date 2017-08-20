@@ -5,7 +5,7 @@ let vDomIdCounter = 0
 /*
 	Mounts a vComponent into the DOM
 */
-export default function mountVComponent(vComponent, $parent) {
+export default function mountVComponent(vComponent, $parent, index) {
 	const { tag, props, children } = vComponent
 	const Component = tag
 	const instance  = new Component(props, children)
@@ -26,7 +26,7 @@ export default function mountVComponent(vComponent, $parent) {
 
 	$element._instance = instance
 
-	$parent.appendChild($element)
+	$parent.insertAtIndex($element, index)
 
 	return $element
 }

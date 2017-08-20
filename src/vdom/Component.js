@@ -18,7 +18,6 @@ export default class Component {
 
     const nextVNode = this.render()
     update(this._vNode, nextVNode)
-
     this._vNode = nextVNode
   }
 

@@ -7,5 +7,5 @@ export default function updateVElement(oldVElement, newVElement) {
 	const { tag, props, children } = newVElement
 
 	updateAttributes($element, props)
-	updateChildren(oldVElement.children, newVElement.children, $element)
+	updateChildren(oldVElement, newVElement, $element)
 }
