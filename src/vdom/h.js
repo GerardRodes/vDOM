@@ -1,5 +1,5 @@
 /*
-	hypertext function
+	HyperScript function
 
 	transform-react-jsx transforms this:
 		<ul>

@@ -14,7 +14,10 @@ export default function updateVComponent(oldVComponent, newVComponent) {
   const oldVNode = _vNode
   const newVNode = _instance.render()
 
-  newVComponent._instance._vNode = newVNode
+  newVNode.$element = newVComponent.$element
+  newVNode._instance = _instance
+  newVNode.props = Object.assign(newVNode.props || {}, nextProps)
 
+  newVComponent._instance._vNode = newVNode
   update(oldVNode, newVNode, _instance.$parent)
 }

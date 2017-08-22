@@ -17,8 +17,16 @@ export default class Component {
     this.state = newState
 
     const nextVNode = this.render()
-    update(this._vNode, nextVNode)
+    const index = Array.from(this.$parent.children).indexOf(this.$element)
+
+    update(this._vNode, nextVNode, this.$parent, index)
+
     this._vNode = nextVNode
+  }
+
+
+  componentWillUpdate(nextProps, nextState) {
+
   }
 
 

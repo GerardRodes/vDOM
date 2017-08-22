@@ -5,11 +5,10 @@ import updateVText from './vText/update'
 import mount from './mounting'
 
 /*
-	Updates an $element, here we want to assert that
-	oldVNode and newVNode reference to the same $element
+  Updates an $element, here we want to assert that
+  oldVNode and newVNode reference to the same $element
 */
 export function update(oldVNode, newVNode, $parent, index = 0) {
-  console.log(index, oldVNode, newVNode)
   if (oldVNode === undefined && newVNode !== undefined) {
     //New, has to be mounted
     mount(newVNode, $parent, index)
@@ -36,28 +35,33 @@ export function update(oldVNode, newVNode, $parent, index = 0) {
 
 export function updateAttributes($element, newAttributes) {
 
-	for (let prop in newAttributes) {
-		if (!prop.startsWith('_')) {
-			if (prop === 'style') {
-				for (let cssProp in newAttributes[prop]) {
-					$element.style[cssProp] = newAttributes[prop][cssProp]
-				}
-			} else {
+  for (let prop in newAttributes) {
+    if (!prop.startsWith('_')) {
+      if (prop === 'style') {
+        for (let cssProp in newAttributes[prop]) {
+          $element.style[cssProp] = newAttributes[prop][cssProp]
+        }
+      } else {
+        let value = newAttributes[prop]
         if (prop.startsWith('on')) {
           //It's an event
-          $element[prop.toLowerCase()] = newAttributes[prop]
+          $element[prop.toLowerCase()] = value
         } else {
-          $element.setAttribute(prop, newAttributes[prop])
+          if (value === null) {
+            $element.removeAttribute(prop)
+          } else {
+            $element.setAttribute(prop, value) 
+          }
         }
-			}
-		}
-	}
-	
+      }
+    }
+  }
+  
 }
 
 export function updateChildren(oldVElement, newVElement, $element) {
-	const prevChildren = Array.isArray(oldVElement.children) ? oldVElement.children : [oldVElement.children]
-	const nextChildren = Array.isArray(newVElement.children) ? newVElement.children : [newVElement.children]
+  const prevChildren = Array.isArray(oldVElement.children) ? oldVElement.children : [oldVElement.children]
+  const nextChildren = Array.isArray(newVElement.children) ? newVElement.children : [newVElement.children]
 
   let nodeDeleted = false
 

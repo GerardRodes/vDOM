@@ -5,7 +5,7 @@ export default function updateVElement(oldVElement, newVElement) {
 	newVElement.$element = $element
 
 	const { tag, props, children } = newVElement
-
+	
 	updateAttributes($element, props)
 	updateChildren(oldVElement, newVElement, $element)
 }
