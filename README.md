@@ -29,9 +29,9 @@ Mis conocimientos de JavaScript son limitados, mi primer contacto con este lengu
 Obviamente mi framework no ofrece todas las utilidades que puede ofrecer cualquier framework de las anteriormente nombrados, ya que he ido desarrollándolas a medida que iba necesitando utilizarlas.
 
 A través del código sigo una serie de convenciones a la hora de nombrar atributos, algunas de las más importantes son:
-* Prefijo `_`: un atributo prefijado con `_` será reconocido como un atributo de privado, el cual no terminará nunca teniendo un impacto directo en el DOM y que se utiliza para manjar datos privados o metadatos.
-* Prefijo `$`: un elemento es prefijado con `$` para simbolizar que está presente en el DOM, es decir, que es un elemento el cual está montado en la estructura HTML de nuestra aplicación.
-* Prefijo `v`: un objecto/diccionario es prefijado con `v` cuando es una representación de un vNode, es decir, la representación del vDOM de un elemento del DOM.
+* `_`: un atributo prefijado con `_` será reconocido como un atributo de privado, el cual no terminará nunca teniendo un impacto directo en el DOM y que se utiliza para manjar datos privados o metadatos.
+* `$`: un elemento es prefijado con `$` para simbolizar que está presente en el DOM, es decir, que es un elemento el cual está montado en la estructura HTML de nuestra aplicación.
+* `v`: un objecto/diccionario es prefijado con `v` cuando es una representación de un vNode, es decir, la representación del vDOM de un elemento del DOM.
 
 Instalación
 ===========
