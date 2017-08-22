@@ -6,7 +6,7 @@ Contenido
 =========
 - [Introducción](#introducción)
 - [Instalación](#instalación)
-- [Virtual DOM](#virtual_dom)
+- [Virtual DOM](#virtual%20dom)
 	* [¿Qué es?](#)
 	* [¿Cómo funciona?](#)
 	* [JSX](#)
