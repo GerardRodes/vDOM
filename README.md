@@ -1,18 +1,18 @@
 Users DB
 ========
-**UI de gestión de usuarios y roles y primera implementación de [vDOM](https://github.com/GerardRodes/vDOM)**
+**UI de gestión de usuarios y roles y primera implementación de vDOM**
 
 Contenido
 =========
 - [Introducción](#introducción)
-- [Instalación](#)
-- [Virtual DOM](#)
+- [Instalación](#instalación)
+- [Virtual DOM](#virtual dom)
 	* [¿Qué es?](#)
 	* [¿Cómo funciona?](#)
 	* [JSX](#)
 	* [Mounting](#)
 	* [Updating](#)
-	* [Tipos de vNode](#)
+	* Tipos de vNode
 		* [vText](#)
 		* [vElement](#)
 		* [vComponent](#)
