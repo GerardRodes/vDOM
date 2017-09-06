@@ -1,6 +1,6 @@
-Users DB
+vDOM
 ========
-**UI de gestión de usuarios y roles y primera implementación de [vDOM](https://github.com/GerardRodes/vDOM)**
+**Implementación del Virtual DOM**
 
 Contenido
 =========
